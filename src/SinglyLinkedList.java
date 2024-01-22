@@ -198,4 +198,54 @@ public class SinglyLinkedList<E> implements List<E> {
             return true;
         }
     }
+
+    @Override
+    public E get(int index) {
+        return search(index).data;
+    }
+
+    @Override
+    public void set(int index, E value) {
+        Node<E> replaceNode = search(index);
+        replaceNode.data = null;
+        replaceNode.data = value;
+    }
+
+    @Override
+    public int indexOf(Object value) {
+        int index = 0;
+        for (Node<E> x = head; x != null; x = x.next) {
+            if (value.equals(x.data)) {
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public boolean contains(Object value) {
+        return indexOf(value) >= 0;
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    @Override
+    public void clear() {
+        for (Node<E> x = head; x != null; ) {
+            Node<E> nextNode = x.next;
+            x.data = null;
+            x.next = null;
+            x = nextNode;
+        }
+        head = tail = null;
+        size = 0;
+    }
 }
