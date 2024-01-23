@@ -1,3 +1,5 @@
+package List;
+
 class Node<E> {
 
     E data;
